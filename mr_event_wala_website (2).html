@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mr. Event Wala – Every Occasion, Perfectly Decorated</title>
+<!-- Google Fonts & Font Awesome for icons -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Tailwind CSS for utility styles -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+  :root {
+    --gold: #F5A623;
+    --gold-light: #FDE9C0;
+    --gold-dark: #C47D0E;
+    --rose: #E84393;
+    --rose-light: #FFD6EC;
+    --sky: #4ECDC4;
+    --sky-light: #D6F5F3;
+    --purple: #9B5DE5;
+    --purple-light: #EEE0FF;
+    --lime: #A3E635;
+    --dark: #120917;
+    --text: #2D1B3D;
+    --muted: #7A6882;
+    --white: #FFFDF8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 4rem;
+    background: rgba(255,253,248,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(245,166,35,0.15);
+    transition: all 0.3s ease;
+  }
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none !important; } /* Simplifies mobile navigation */
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--dark);
+    letter-spacing: -0.5px;
+  }
+  .nav-logo span { color: var(--rose); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--rose); }
+  .nav-cta {
+    background: var(--rose);
+    color: white !important;
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600 !important;
+    transition: transform 0.2s, box-shadow 0.2s !important;
+  }
+  .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(232,67,147,0.35) !important; color: white !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    padding: 8rem 4rem 4rem;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  @media (max-width: 1024px) {
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 7rem 1.5rem 3rem;
+      gap: 3rem;
+      text-align: center;
+    }
+    .hero-sub { margin-left: auto; margin-right: auto; }
+    .hero-actions, .hero-stats { justify-content: center; }
+  }
+
+  .hero-bg-blobs {
+    position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  }
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.15;
+    animation: blobFloat 12s ease-in-out infinite alternate;
+  }
+  .blob-1 { width: 500px; height: 500px; background: var(--rose); top: -100px; right: -50px; animation-delay: 0s; }
+  .blob-2 { width: 350px; height: 350px; background: var(--gold); bottom: 0; left: -80px; animation-delay: 2s; }
+  .blob-3 { width: 250px; height: 250px; background: var(--sky); top: 40%; right: 20%; animation-delay: 4s; }
+  @keyframes blobFloat {
+    from { transform: translateY(0) scale(1); }
+    to   { transform: translateY(-40px) scale(1.1); }
+  }
+
+  .hero-text { position: relative; z-index: 1; }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--gold-light);
+    color: var(--gold-dark);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s ease both;
+  }
+  .badge-dot {
+    width: 7px; height: 7px;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.6; }
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    color: var(--dark);
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  @media (max-width: 640px) {
+    .hero-title { font-size: 2.8rem; }
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--rose);
+    display: block;
+  }
+  .hero-title .underline-word {
+    position: relative;
+    display: inline-block;
+  }
+  .hero-title .underline-word::after {
+    content: '';
+    position: absolute;
+    bottom: 2px; left: 0; right: 0;
+    height: 8px;
+    background: var(--gold);
+    border-radius: 4px;
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: drawLine 0.6s 0.8s ease forwards;
+  }
+  @keyframes drawLine { to { transform: scaleX(1); } }
+
+  .hero-sub {
+    margin-top: 1.4rem;
+    font-size: 1.1rem;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 480px;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-actions {
+    display: flex; gap: 1.2rem; margin-top: 2.5rem; flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .btn-primary {
+    background: var(--rose);
+    color: white;
+    padding: 0.95rem 2.2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    box-shadow: 0 8px 28px rgba(232,67,147,0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(232,67,147,0.45); }
+  .btn-secondary {
+    color: var(--dark);
+    padding: 0.95rem 2.2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    border: 2px solid rgba(45,27,61,0.15);
+    transition: border-color 0.2s, background 0.2s;
+    background: white;
+  }
+  .btn-secondary:hover { border-color: var(--rose); background: var(--rose-light); }
+
+  .hero-stats {
+    display: flex; gap: 2.5rem; margin-top: 3.5rem;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--dark);
+    line-height: 1;
+  }
+  .stat-num span { color: var(--rose); }
+  .stat-label { font-size: 0.8rem; color: var(--muted); font-weight: 600; letter-spacing: 0.5px; margin-top: 0.3rem; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── STREAMING_CHUNK:Styling Event visual grid cards with stunning overlays... ── */
+  .hero-visual {
+    position: relative; z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 1.2rem;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  @media (max-width: 500px) {
+    .hero-visual { grid-template-columns: 1fr; }
+    .card-wedding, .card-birthday, .card-corporate, .card-big { grid-column: auto !important; grid-row: auto !important; }
+  }
+  
+  .event-card {
+    border-radius: 24px;
+    padding: 2.5rem 1.8rem 1.8rem;
+    position: relative;
+    overflow: hidden;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  }
+  .event-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(18,9,23,0.1) 0%, rgba(18,9,23,0.85) 100%);
+    z-index: 1;
+    transition: background 0.3s;
+  }
+  .event-card:hover { 
+    transform: translateY(-8px) scale(1.02); 
+    box-shadow: 0 15px 35px rgba(18,9,23,0.25);
+  }
+  .event-card:hover::before {
+    background: linear-gradient(180deg, rgba(18,9,23,0.2) 0%, rgba(18,9,23,0.95) 100%);
+  }
+
+  .event-card .card-emoji { 
+    font-size: 2.2rem; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    width: 52px; height: 52px;
+    border-radius: 16px;
+    margin-bottom: auto; 
+    position: relative; z-index: 2;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  .event-card .card-title { 
+    font-family: 'Playfair Display', serif; 
+    font-weight: 700; 
+    font-size: 1.25rem; 
+    color: white; 
+    position: relative; z-index: 2;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+  }
+  .event-card .card-sub { 
+    font-size: 0.82rem; 
+    color: rgba(255,255,255,0.85); 
+    margin-top: 0.25rem; 
+    position: relative; z-index: 2;
+    font-weight: 500;
+  }
+
+  /* Dynamic high quality Unsplash background event setups */
+  .card-wedding { 
+    background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=600'); 
+    grid-column: 1; grid-row: 1; 
+  }
+  .card-birthday { 
+    background-image: url('https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&q=80&w=600'); 
+    grid-column: 2; grid-row: 1; 
+  }
+  .card-corporate { 
+    background-image: url('https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80&w=600'); 
+    grid-column: 1; grid-row: 2; 
+  }
+  .card-big { 
+    background-image: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=600'); 
+    grid-column: 2; grid-row: 2; 
+  }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 6rem 4rem; }
+  @media (max-width: 768px) {
+    section { padding: 4rem 1.5rem; }
+  }
+  .section-badge {
+    display: inline-block;
+    background: var(--gold-light);
+    color: var(--gold-dark);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 0.8rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--dark);
+    line-height: 1.15;
+    letter-spacing: -1px;
+  }
+  @media (max-width: 640px) {
+    .section-title { font-size: 2.2rem; }
+  }
+  .section-title em { font-style: italic; color: var(--rose); }
+
+  /* ── SERVICES ── */
+  .services { background: var(--dark); }
+  .services .section-badge { background: rgba(245,166,35,0.15); color: var(--gold); }
+  .services .section-title { color: white; }
+  .services-intro { color: rgba(255,255,255,0.6); margin-top: 0.8rem; max-width: 550px; font-size: 1.05rem; line-height: 1.7; }
+
+  .services-header {
+    display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 4rem;
+    flex-wrap: wrap; gap: 1.5rem;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem;
+  }
+  @media (max-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .services-grid { grid-template-columns: 1fr; }
+  }
+
+  .service-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    padding: 2.2rem;
+    transition: background 0.3s, transform 0.3s, border-color 0.3s;
+    cursor: default;
+  }
+  .service-card:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: var(--rose);
+    transform: translateY(-5px);
+  }
+  .service-icon {
+    font-size: 2.2rem;
+    margin-bottom: 1.4rem;
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    width: 60px; height: 60px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+  }
+  .service-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.8rem;
+  }
+  .service-desc { color: rgba(255,255,255,0.55); font-size: 0.92rem; line-height: 1.7; }
+  .service-tag {
+    display: inline-block;
+    margin-top: 1.5rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 0.35rem 0.9rem;
+    border-radius: 50px;
+  }
+
+  /* ── STREAMING_CHUNK:Styling features & testimonial section... ── */
+  /* ── WHY US ── */
+  .why { background: var(--white); }
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1.12fr 0.88fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 3.5rem;
+  }
+  @media (max-width: 1024px) {
+    .why-grid { grid-template-columns: 1fr; gap: 3rem; }
+  }
+  .why-features { display: flex; flex-direction: column; gap: 1.5rem; }
+  .why-feature {
+    display: flex; gap: 1.5rem; align-items: flex-start;
+    padding: 1.4rem;
+    border-radius: 20px;
+    transition: background 0.3s, transform 0.2s;
+  }
+  .why-feature:hover { 
+    background: #FFF9EE; 
+    transform: translateX(5px);
+  }
+  .feature-icon-wrap {
+    width: 52px; height: 52px; border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem; flex-shrink: 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  }
+  .feature-text h4 { font-weight: 700; font-size: 1.1rem; color: var(--dark); margin-bottom: 0.3rem; }
+  .feature-text p { font-size: 0.9rem; color: var(--muted); line-height: 1.65; }
+
+  /* Elegant Testimonial Visual container with blurred background image overlay */
+  .why-visual {
+    background: linear-gradient(135deg, rgba(18,9,23,0.92) 0%, rgba(18,9,23,0.85) 100%), 
+                url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&q=80&w=800');
+    background-size: cover;
+    background-position: center;
+    border-radius: 32px;
+    padding: 3rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(18,9,23,0.15);
+  }
+  .why-visual-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 2rem;
+    letter-spacing: -0.5px;
+  }
+  .testimonial-card {
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
+    padding: 1.6rem;
+    text-align: left;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    margin-bottom: 1.2rem;
+    position: relative;
+    border: 1px solid rgba(255,255,255,0.4);
+    transition: transform 0.2s;
+  }
+  .testimonial-card:hover { transform: translateY(-3px); }
+  .testimonial-card .stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 0.6rem; }
+  .testimonial-card p { font-size: 0.92rem; color: var(--text); line-height: 1.7; font-style: italic; }
+  .testimonial-card .reviewer { margin-top: 1rem; display: flex; align-items: center; gap: 0.8rem; }
+  .reviewer-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.85rem; color: white;
+  }
+  .reviewer-name { font-weight: 700; font-size: 0.88rem; color: var(--dark); }
+  .reviewer-event { font-size: 0.78rem; color: var(--muted); margin-top: 0.1rem; }
+
+  /* ── HOW IT WORKS ── */
+  .process { background: #FFF9F3; }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 4.5rem;
+  }
+  @media (max-width: 1024px) {
+    .process-steps { grid-template-columns: repeat(2, 1fr); }
+    .step-card::after { display: none !important; }
+  }
+  @media (max-width: 640px) {
+    .process-steps { grid-template-columns: 1fr; }
+  }
+
+  .step-card {
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    position: relative;
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 8px 25px rgba(245,166,35,0.04);
+    border: 1px solid rgba(245,166,35,0.08);
+    transition: transform 0.3s;
+  }
+  .step-card:hover { transform: translateY(-5px); }
+  .step-card::after {
+    content: '→';
+    position: absolute;
+    right: -1.3rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.8rem;
+    color: var(--gold);
+    font-weight: 700;
+    opacity: 0.7;
+    transition: transform 0.2s;
+  }
+  .step-card:hover::after { transform: translateY(-50%) translateX(3px); }
+  .step-card:last-child::after { display: none; }
+  
+  .step-num {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: var(--dark);
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 1.2rem;
+    display: flex; align-items: center; justify-content: center;
+    margin: -4rem auto 1.5rem;
+    border: 4px solid #FFF9F3;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+  .step-emoji { 
+    font-size: 2.2rem; 
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    width: 64px; height: 64px;
+    background: var(--gold-light);
+    color: var(--gold-dark);
+    border-radius: 20px;
+    margin-bottom: 1.2rem; 
+  }
+  .step-card h4 { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--dark); margin-bottom: 0.6rem; }
+  .step-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+
+  /* ── STREAMING_CHUNK:Polishing image gallery grids and adding background cover styling... ── */
+  /* ── GALLERY ── */
+  .gallery { background: var(--white); }
+  .gallery-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3.5rem; flex-wrap: wrap; gap: 1.5rem; }
+  
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 250px 250px;
+    gap: 1.2rem;
+  }
+  @media (max-width: 1024px) {
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 220px);
+    }
+    .g1 { grid-column: 1 !important; grid-row: 1 / span 2 !important; }
+    .g4 { grid-column: 2 !important; grid-row: 2 / span 2 !important; }
+  }
+  @media (max-width: 640px) {
+    .gallery-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+    }
+    .gallery-item { min-height: 200px; grid-column: auto !important; grid-row: auto !important; }
+  }
+
+  .gallery-item {
+    border-radius: 24px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: flex-end;
+    padding: 1.8rem;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  }
+  .gallery-item::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(18,9,23,0) 20%, rgba(18,9,23,0.8) 100%);
+    z-index: 1;
+    transition: background 0.3s;
+  }
+  .gallery-item:hover { 
+    transform: translateY(-5px) scale(1.02); 
+    box-shadow: 0 20px 40px rgba(18,9,23,0.18);
+  }
+  .gallery-item:hover::before {
+    background: linear-gradient(180deg, rgba(18,9,23,0.1) 10%, rgba(18,9,23,0.9) 100%);
+  }
+
+  .gallery-item .g-icon {
+    font-size: 2.2rem;
+    position: relative; z-index: 2;
+    margin-bottom: auto;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(8px);
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s, transform 0.3s;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  .gallery-item:hover .g-icon {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .gallery-item .g-label {
+    font-size: 0.8rem; font-weight: 700; letter-spacing: 1.5px;
+    color: white;
+    position: relative; z-index: 2;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  }
+
+  /* Beautiful high-end event decoration photographs */
+  .g1 { 
+    background-image: url('https://images.unsplash.com/photo-1519225495810-7512c696505a?auto=format&fit=crop&q=80&w=800'); 
+    grid-column: 1; grid-row: 1 / span 2; 
+  }
+  .g2 { 
+    background-image: url('https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&q=80&w=600'); 
+    grid-column: 2; grid-row: 1; 
+  }
+  .g3 { 
+    background-image: url('https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&q=80&w=600'); 
+    grid-column: 3; grid-row: 1; 
+  }
+  .g4 { 
+    background-image: url('https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&q=80&w=800'); 
+    grid-column: 4; grid-row: 1 / span 2; 
+  }
+  .g5 { 
+    background-image: url('https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&q=80&w=600'); 
+    grid-column: 2; grid-row: 2; 
+  }
+  .g6 { 
+    background-image: url('https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&q=80&w=600'); 
+    grid-column: 3; grid-row: 2; 
+  }
+
+  /* ── STREAMING_CHUNK:Configuring call-to-action banner & contact block... ── */
+  /* ── CTA BANNER ── */
+  .cta-banner {
+    background: linear-gradient(135deg, rgba(232,67,147,0.92) 0%, rgba(155,93,229,0.88) 100%),
+                url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=1200');
+    background-size: cover;
+    background-position: center;
+    padding: 6rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  @media (max-width: 640px) {
+    .cta-banner { padding: 4rem 1.5rem; }
+  }
+  .cta-banner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.2rem; font-weight: 900;
+    color: white; line-height: 1.15;
+    letter-spacing: -1px;
+    position: relative; z-index: 1;
+  }
+  @media (max-width: 640px) {
+    .cta-banner h2 { font-size: 2.2rem; }
+  }
+  .cta-banner h2 em { font-style: italic; color: var(--gold); }
+  .cta-banner p {
+    color: rgba(255,255,255,0.9);
+    margin: 1.2rem auto 2.5rem;
+    max-width: 520px; font-size: 1.1rem; line-height: 1.7;
+    position: relative; z-index: 1;
+    font-weight: 500;
+  }
+  .cta-banner .btn-white {
+    background: white; color: var(--rose);
+    padding: 1.1rem 2.6rem; border-radius: 50px;
+    font-weight: 700; font-size: 1.05rem; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative; z-index: 1;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  }
+  .cta-banner .btn-white:hover { transform: translateY(-2px); box-shadow: 0 15px 40px rgba(0,0,0,0.25); }
+
+  /* ── CONTACT ── */
+  .contact { background: var(--dark); }
+  .contact .section-title { color: white; }
+  .contact .section-badge { background: rgba(245,166,35,0.15); color: var(--gold); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 4rem;
+    margin-top: 4rem;
+    align-items: start;
+  }
+  @media (max-width: 1024px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  }
+  .contact-desc { color: rgba(255,255,255,0.6); line-height: 1.75; margin: 1.2rem 0 2.5rem; font-size: 1.02rem; }
+  .contact-item {
+    display: flex; align-items: center; gap: 1.2rem;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .contact-item-icon {
+    width: 48px; height: 48px; border-radius: 14px;
+    background: rgba(255,255,255,0.06);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; flex-shrink: 0;
+    color: var(--gold);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .contact-item-text p:first-child { color: rgba(255,255,255,0.45); font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+  .contact-item-text p:last-child { color: white; font-size: 1.05rem; margin-top: 0.2rem; font-weight: 500; }
+
+  .contact-form {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 28px;
+    padding: 3rem;
+  }
+  @media (max-width: 640px) {
+    .contact-form { padding: 2rem 1.5rem; }
+  }
+  .form-title { color: white; font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  @media (max-width: 500px) {
+    .form-row { grid-template-columns: 1fr; gap: 1rem; }
+  }
+  .form-group { margin-bottom: 1.2rem; }
+  .form-group label { color: rgba(255,255,255,0.55); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; display: block; margin-bottom: 0.5rem; }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%; padding: 0.85rem 1.1rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+  .form-group select option { background: #190D21; color: white; }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--rose); background: rgba(255,255,255,0.08); }
+  .form-group textarea { resize: none; height: 110px; }
+  .form-submit {
+    width: 100%;
+    background: var(--rose);
+    color: white;
+    border: none;
+    padding: 1.1rem;
+    border-radius: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+    margin-top: 0.8rem;
+    box-shadow: 0 6px 20px rgba(232,67,147,0.3);
+  }
+  .form-submit:hover { transform: translateY(-1px); box-shadow: 0 10px 25px rgba(232,67,147,0.45); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0B050E;
+    padding: 2.5rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  @media (max-width: 640px) {
+    footer { padding: 2rem 1.5rem; flex-direction: column; text-align: center; }
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 1.3rem;
+    color: white;
+  }
+  .footer-logo span { color: var(--rose); }
+  footer p { color: rgba(255,255,255,0.4); font-size: 0.85rem; }
+  .footer-links { display: flex; gap: 1.8rem; }
+  .footer-links a { color: rgba(255,255,255,0.45); font-size: 0.85rem; text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--rose); }
+
+  /* ── CONFETTI ── */
+  .confetti-wrap { position: fixed; inset: 0; pointer-events: none; z-index: 999; overflow: hidden; }
+  .confetti-piece {
+    position: absolute;
+    width: 8px; height: 14px;
+    opacity: 0;
+    animation: confettiFall linear forwards;
+    border-radius: 2px;
+  }
+  @keyframes confettiFall {
+    0%   { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+  }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- Confetti container -->
+<div class="confetti-wrap" id="confettiWrap"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Mr. <span>Event</span> Wala</div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact" class="nav-cta">Book Now ✨</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <div class="hero-text">
+    <div class="hero-badge"><div class="badge-dot"></div> Ahmedabad's Favourite Decorators</div>
+    <h1 class="hero-title">
+      We Make Your <em>Moments</em>
+      <span class="underline-word">Magical</span>
+    </h1>
+    <p class="hero-sub">From intimate birthdays to grand destination weddings — Mr. Event Wala brings colour, luxury, and unforgettable décor to every celebration.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Book Your Event 🎉</a>
+      <a href="#services" class="btn-secondary">Our Services</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">500<span>+</span></div>
+        <div class="stat-label">Events Decorated</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">8<span>+</span></div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100<span>%</span></div>
+        <div class="stat-label">Happy Clients</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Visual Cards with realistic, high-resolution decorative background images -->
+  <div class="hero-visual">
+    <div class="event-card card-wedding">
+      <span class="card-emoji">💍</span>
+      <div>
+        <div class="card-title">Wedding Décor</div>
+        <div class="card-sub">Mandaps, floral arches & grand entryways</div>
+      </div>
+    </div>
+    <div class="event-card card-birthday">
+      <span class="card-emoji">🎂</span>
+      <div>
+        <div class="card-title">Birthday Parties</div>
+        <div class="card-sub">Creative theme balloons & neon setups</div>
+      </div>
+    </div>
+    <div class="event-card card-corporate">
+      <span class="card-emoji">🏢</span>
+      <div>
+        <div class="card-title">Corporate Events</div>
+        <div class="card-sub">Sleek stages, backdrops & branding booths</div>
+      </div>
+    </div>
+    <div class="event-card card-big">
+      <span class="card-emoji">🎊</span>
+      <div>
+        <div class="card-title">Grand Celebrations</div>
+        <div class="card-sub">Baby showers, milestones & engagements</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header">
+    <div>
+      <div class="section-badge">What We Do</div>
+      <h2 class="section-title">Every Occasion, <em>Beautifully Done</em></h2>
+      <p class="services-intro">We specialise in turning empty venues into breathtaking environments. No event is too big, and no detail is too small.</p>
+    </div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <span class="service-icon text-rose-400"><i class="fa-solid fa-ring"></i></span>
+      <div class="service-name">Wedding Decoration</div>
+      <div class="service-desc">Stunning traditional mandaps, phoolon ki chaddar, floral aisle carpets, stage spotlights, and gate decor designed for your grand vows.</div>
+      <span class="service-tag" style="background:rgba(232,67,147,0.15);color:var(--rose);">Most Popular</span>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon text-amber-400"><i class="fa-solid fa-cake-candles"></i></span>
+      <div class="service-name">Birthday Parties</div>
+      <div class="service-desc">Themed background sets, high-end balloon sculptures, personalized photobooths, and premium light setup for any milestone age.</div>
+      <span class="service-tag" style="background:rgba(245,166,35,0.15);color:var(--gold);">Kids Special</span>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon text-teal-400"><i class="fa-solid fa-baby-carriage"></i></span>
+      <div class="service-name">Baby Shower</div>
+      <div class="service-desc">Charming pastel balloon arches, floral cradles, gorgeous backdrops, and photogenic details to welcome the upcoming star.</div>
+      <span class="service-tag" style="background:rgba(78,205,196,0.15);color:var(--sky);">Trending</span>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon text-purple-400"><i class="fa-solid fa-briefcase"></i></span>
+      <div class="service-name">Corporate Events</div>
+      <div class="service-desc">Clean stage décor, modern company branded backdrops, LED panel integration, and aesthetic entry lounges for premium impressions.</div>
+      <span class="service-tag" style="background:rgba(155,93,229,0.15);color:var(--purple);">Premium</span>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon text-pink-400"><i class="fa-solid fa-heart"></i></span>
+      <div class="service-name">Anniversary & Engagement</div>
+      <div class="service-desc">Romantic fairylight canopies, elegant floral hoops, red carpet setups, and cozy photo galleries celebrating your lifetime bond.</div>
+      <span class="service-tag" style="background:rgba(232,67,147,0.15);color:var(--rose);">Romantic</span>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon text-yellow-400"><i class="fa-solid fa-masks-theater"></i></span>
+      <div class="service-name">Theme Parties</div>
+      <div class="service-desc">Retro Bollywood vibes, elegant Rajasthani cultural setups, exotic tropical layouts — we tailor design dreams into concrete reality.</div>
+      <span class="service-tag" style="background:rgba(245,166,35,0.15);color:var(--gold);">Custom</span>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why" id="why">
+  <div class="section-badge">Why Choose Us</div>
+  <h2 class="section-title">Trusted by Families <em>Across Ahmedabad</em></h2>
+  <div class="why-grid">
+    <div class="why-features">
+      <div class="why-feature reveal">
+        <div class="feature-icon-wrap" style="background:var(--rose-light); color: var(--rose);"><i class="fa-solid fa-palette"></i></div>
+        <div class="feature-text">
+          <h4>100% Custom Designs</h4>
+          <p>Every setup is curated fresh. We map your specific requirements, colors, and event spaces to deliver a one-of-a-kind production.</p>
+        </div>
+      </div>
+      <div class="why-feature reveal">
+        <div class="feature-icon-wrap" style="background:var(--gold-light); color: var(--gold-dark);"><i class="fa-solid fa-bolt"></i></div>
+        <div class="feature-text">
+          <h4>On-Time, Every Time</h4>
+          <p>We honor your scheduling. Our team wraps up work hours before the guests arrive, ensuring plenty of time for pictures.</p>
+        </div>
+      </div>
+      <div class="why-feature reveal">
+        <div class="feature-icon-wrap" style="background:var(--sky-light); color: #378a84;"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+        <div class="feature-text">
+          <h4>Affordable Packages</h4>
+          <p>High-end results don't have to break your bank. We create breathtaking designs optimized perfectly for your budget.</p>
+        </div>
+      </div>
+      <div class="why-feature reveal">
+        <div class="feature-icon-wrap" style="background:var(--purple-light); color: var(--purple);"><i class="fa-solid fa-face-smile"></i></div>
+        <div class="feature-text">
+          <h4>End-to-End Execution</h4>
+          <p>From initial mood boarding down to post-event clean-up, we tackle all the heavy lifting so you celebrate tension-free.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Curated background & testimonials inside the right hand side box -->
+    <div class="why-visual reveal">
+      <div class="why-visual-title">💬 What Our Clients Say</div>
+      <div class="testimonial-card">
+        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p>"The wedding décor was beyond our expectations! Every corner was so beautifully done. Our guests could not stop taking photos."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar" style="background:var(--rose);">P</div>
+          <div>
+            <div class="reviewer-name">Priya & Raj Mehta</div>
+            <div class="reviewer-event">Wedding • Feb 2026</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p>"Organised my son's first birthday party. The balloon setup and cake table were absolutely adorable. Will book again for sure!"</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar" style="background:var(--purple);">S</div>
+          <div>
+            <div class="reviewer-name">Sneha Patel</div>
+            <div class="reviewer-event">1st Birthday • Dec 2025</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div style="text-align:center; margin-bottom: 0;">
+    <div class="section-badge">How It Works</div>
+    <h2 class="section-title">From <em>Dream</em> to Decoration</h2>
+    <p style="color:var(--muted); margin-top:0.7rem; font-size:1rem;">4 simple steps to materialize your perfect celebration</p>
+  </div>
+  <div class="process-steps">
+    <div class="step-card reveal">
+      <span class="step-emoji">📞</span>
+      <div class="step-num">1</div>
+      <h4>Get in Touch</h4>
+      <p>Call, WhatsApp, or drop a query. Share your event type, date, location, and visual concepts.</p>
+    </div>
+    <div class="step-card reveal">
+      <span class="step-emoji">🎨</span>
+      <div class="step-num">2</div>
+      <h4>Design & Plan</h4>
+      <p>We draw up custom mood boards and propose transparent, custom design layouts for your approval.</p>
+    </div>
+    <div class="step-card reveal">
+      <span class="step-emoji">🔧</span>
+      <div class="step-num">3</div>
+      <h4>Seamless Setup</h4>
+      <p>Our skilled crew takes over. We craft, assemble, and verify every floral strand and lighting angle.</p>
+    </div>
+    <div class="step-card reveal">
+      <span class="step-emoji">🎉</span>
+      <div class="step-num">4</div>
+      <h4>You Celebrate!</h4>
+      <p>Step inside, feel the magic, and enjoy. We handle subsequent dismantles and cleanup afterward.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="gallery-header">
+    <div>
+      <div class="section-badge">Our Work</div>
+      <h2 class="section-title">A Peek Into Our <em>Portfolio</em></h2>
+    </div>
+    <a href="https://www.instagram.com/mr__event__wala__/" target="_blank" class="btn-secondary" style="font-size:0.9rem; display:inline-flex; align-items:center; gap:0.5rem;">
+      <i class="fa-brands fa-instagram text-rose-500"></i> See More on Instagram ↗
+    </a>
+  </div>
+  <!-- Immersive Gallery showcasing high quality real decor photography instead of emoji blocks -->
+  <div class="gallery-grid">
+    <div class="gallery-item g1 reveal">
+      <div class="g-icon"><i class="fa-solid fa-ring text-white text-base"></i></div>
+      <div class="g-label">WEDDINGS</div>
+    </div>
+    <div class="gallery-item g2 reveal">
+      <div class="g-icon"><i class="fa-solid fa-cake-candles text-white text-base"></i></div>
+      <div class="g-label">BIRTHDAYS</div>
+    </div>
+    <div class="gallery-item g3 reveal">
+      <div class="g-icon"><i class="fa-solid fa-baby text-white text-base"></i></div>
+      <div class="g-label">BABY SHOWER</div>
+    </div>
+    <div class="gallery-item g4 reveal">
+      <div class="g-icon"><i class="fa-solid fa-heart text-white text-base"></i></div>
+      <div class="g-label">ANNIVERSARIES</div>
+    </div>
+    <div class="gallery-item g5 reveal">
+      <div class="g-icon"><i class="fa-solid fa-briefcase text-white text-base"></i></div>
+      <div class="g-label">CORPORATE</div>
+    </div>
+    <div class="gallery-item g6 reveal">
+      <div class="g-icon"><i class="fa-solid fa-masks-theater text-white text-base"></i></div>
+      <div class="g-label">THEME PARTIES</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <h2>Ready to Make Your Event <em>Unforgettable?</em></h2>
+  <p>Let's start planning together! Connect with our creative directors today for a free visual catalog and quotation within 24 hours.</p>
+  <a href="#contact" class="btn-white">🎉 Book a Free Consultation</a>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-badge">Get In Touch</div>
+  <h2 class="section-title">Let's Plan Your <em>Perfect Event</em></h2>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <p class="contact-desc">Have a date in mind? An inspiration picture? Share it with us — we would love to custom craft your dream venue and host a beautiful memory!</p>
+      <div class="contact-item">
+        <div class="contact-item-icon"><i class="fa-solid fa-phone"></i></div>
+        <div class="contact-item-text">
+          <p>Phone / WhatsApp</p>
+          <p>+91 98765 43210</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+        <div class="contact-item-text">
+          <p>Location</p>
+          <p>Ahmedabad, Gujarat</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon"><i class="fa-brands fa-instagram"></i></div>
+        <div class="contact-item-text">
+          <p>Instagram</p>
+          <p>@mr__event__wala__</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon"><i class="fa-regular fa-clock"></i></div>
+        <div class="contact-item-text">
+          <p>Available Hours</p>
+          <p>Mon – Sun, 9am – 9pm</p>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form reveal">
+      <div class="form-title">Send Us a Message 💌</div>
+      <div class="form-row">
+        <div class="form-group"><label>Your Name</label><input type="text" placeholder="Rahul Shah"></div>
+        <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+91 98765 43210"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Event Type</label>
+          <select>
+            <option value="">Select event...</option>
+            <option>Wedding</option>
+            <option>Birthday Party</option>
+            <option>Baby Shower</option>
+            <option>Anniversary</option>
+            <option>Corporate Event</option>
+            <option>Engagement</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Event Date</label><input type="date"></div>
+      </div>
+      <div class="form-group"><label>Your Message</label><textarea placeholder="Tell us about your dream decoration..."></textarea></div>
+      <button class="form-submit" onclick="handleSubmit()">Send Message & Book Now 🎉</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Mr. <span>Event</span> Wala</div>
+  <p>© 2026 Mr. Event Wala · Ahmedabad, Gujarat · Made with ❤️</p>
+  <div class="footer-links">
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+    <a href="https://instagram.com/mr__event__wala__" target="_blank">Instagram</a>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Confetti algorithm
+function launchConfetti() {
+  const colors = ['#E84393','#F5A623','#4ECDC4','#9B5DE5','#A3E635','#FF6B6B'];
+  const wrap = document.getElementById('confettiWrap');
+  for (let i = 0; i < 60; i++) {
+    const el = document.createElement('div');
+    el.className = 'confetti-piece';
+    el.style.cssText = `
+      left: ${Math.random()*100}vw;
+      background: ${colors[Math.floor(Math.random()*colors.length)]};
+      width: ${4 + Math.random()*8}px;
+      height: ${8 + Math.random()*12}px;
+      animation-duration: ${2 + Math.random()*2}s;
+      animation-delay: ${Math.random()*1.5}s;
+      transform: rotate(${Math.random()*360}deg);
+    `;
+    wrap.appendChild(el);
+    setTimeout(() => el.remove(), 4500);
+  }
+}
+setTimeout(launchConfetti, 400);
+
+// Form submit trigger
+function handleSubmit() {
+  const btn = document.querySelector('.form-submit');
+  btn.textContent = '✅ Inquiry Registered! Talk Soon!';
+  btn.style.background = '#1A936F';
+  launchConfetti();
+  setTimeout(() => {
+    btn.textContent = 'Send Message & Book Now 🎉';
+    btn.style.background = '';
+  }, 4000);
+}
+</script>
+</body>
+</html>
